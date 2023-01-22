@@ -1,5 +1,8 @@
 import { Router } from 'express'
-import { postUser, getUserById, getUsers, patchUser, patchUserAvatar } from '../controllers/users'
+import {
+  postUser, getUserById, getUsers, patchUser, patchUserAvatar,
+} from '../controllers/users'
+
 const router = Router()
 
 router.get('/', getUsers)

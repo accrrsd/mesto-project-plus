@@ -1,5 +1,8 @@
 import { Router } from 'express'
-import { getCards, postCard, deleteCard, likeCard, removeLikeFromCard } from '../controllers/cards'
+import {
+  getCards, postCard, deleteCard, likeCard, removeLikeFromCard,
+} from '../controllers/cards'
+
 const router = Router()
 
 router.get('/', getCards)
