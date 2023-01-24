@@ -14,7 +14,9 @@
   "author": "Daniil — kashel369@bk.ru",
   "license": "ISC",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.6.3",
     "@types/validator": "^13.7.10",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
@@ -27,7 +29,9 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "express": "^4.18.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.5.0",
     "validator": "^13.7.0"
   }
