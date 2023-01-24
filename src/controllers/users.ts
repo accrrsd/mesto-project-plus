@@ -3,9 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { JWT_COOKIE_EXPIRES, JWT_SECRET } from '../configuration/config'
 import User from '../models/user'
-import {
-  BadRequestError, ConflictError, NotFoundError, UnauthorizedError
-} from '../utils/errors'
+import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError } from '../utils/errors'
 
 /* eslint no-param-reassign: "off" */
 
@@ -23,10 +21,8 @@ export const getUserById = (req: Request, res: Response, next: NextFunction) =>
     .then((user) => res.json(user))
     .catch(next)
 
-export const postUser = (req: Request, res: Response, next: NextFunction) => {
-  const {
-    name, about, avatar, password, email
-  } = req.body
+export const createUser = (req: Request, res: Response, next: NextFunction) => {
+  const { name, about, avatar, password, email } = req.body
   bcrypt.hash(password, 10).then((hashedPassword) => {
     User.create({
       name,
