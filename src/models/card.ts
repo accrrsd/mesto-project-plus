@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
-import { invalidUrl } from 'utils/validationErrors'
 import validator from 'validator'
+import { invalidUrl } from '../utils/validationErrors'
 
 interface ICard {
   name: string

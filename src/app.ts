@@ -1,33 +1,33 @@
 import express, { Request, Response, NextFunction } from 'express'
-
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
-import usersRouter from './routes/users'
+import { login, postUser } from './controllers/users'
+import authMiddleware from './middlewares/auth'
+import errorHandler from './middlewares/errorHandler'
+import { requestLogger, errorLogger } from './middlewares/logger'
 import cardsRouter from './routes/cards'
+import usersRouter from './routes/users'
+
+dotenv.config()
 
 const { PORT = 3000, DBURL = 'mongodb://localhost:27017/mestodb' } = process.env
 
 const app = express()
 
 app.use(express.json())
+app.use(requestLogger)
 app.use(express.urlencoded({ extended: true }))
 
 mongoose.connect(DBURL)
 
-app.use((req, res, next) => {
-  // @ts-ignore:next-line
-  req.user = {
-    _id: '63cb092f292ddccc3bda2928',
-  }
-
-  next()
-})
-
+app.post('/signin', login)
+app.post('/signup', postUser)
+app.use(authMiddleware)
 app.use('/users', usersRouter)
 app.use('/cards', cardsRouter)
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  res.status(500).send({ message: 'На сервере произошла ошибка' })
-})
+app.use(errorLogger)
+app.use(errorHandler)
 
 app.listen(PORT)

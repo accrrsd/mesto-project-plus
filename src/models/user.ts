@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-import { invalidUrl } from 'utils/validationErrors'
 import validator from 'validator'
+import { invalidUrl } from '../utils/validationErrors'
 
 interface IUser {
   name: string
