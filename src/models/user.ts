@@ -30,8 +30,8 @@ const userSchema = new mongoose.Schema<IUser>({
   },
   email: {
     type: String,
-    required: true,
     unique: true,
+    required: true,
     lowercase: true,
     validate: [validator.isEmail, 'Некорректный Email'],
   },

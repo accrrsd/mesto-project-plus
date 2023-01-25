@@ -8,6 +8,7 @@ import errorHandler from './middlewares/errorHandler'
 import { requestLogger, errorLogger } from './middlewares/logger'
 import cardsRouter from './routes/cards'
 import usersRouter from './routes/users'
+import { checkCreateUser, checkLogin } from './validators/userValidators'
 
 dotenv.config()
 
@@ -21,8 +22,8 @@ app.use(express.urlencoded({ extended: true }))
 
 mongoose.connect(DBURL)
 
-app.post('/signin', login)
-app.post('/signup', createUser)
+app.post('/signin', checkLogin, login)
+app.post('/signup', checkCreateUser, createUser)
 app.use(authMiddleware)
 app.use('/users', usersRouter)
 app.use('/cards', cardsRouter)

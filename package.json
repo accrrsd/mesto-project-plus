@@ -1,7 +1,7 @@
 {
-  "name": "starterkits",
+  "name": "mesto-backend",
   "version": "1.0.0",
-  "description": "< Добавьте описание проекта в свободной форме >",
+  "description": "Простенький бек для проекта MESTO (не такой уж и простенький)",
   "main": "dist/app.js",
   "scripts": {
     "lint": "npx eslint src/**/*.ts",
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "celebrate": "^15.0.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "express-winston": "^4.2.0",

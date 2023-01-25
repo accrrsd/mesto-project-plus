@@ -1,14 +1,15 @@
 import { Router } from 'express'
 import {
-  getCards, postCard, deleteCard, likeCard, removeLikeFromCard,
+  getCards, postCard, deleteCard, likeCard, removeLikeFromCard
 } from '../controllers/cards'
+import { checkCard, checkCardId } from '../validators/cardValidators'
 
 const router = Router()
 
 router.get('/', getCards)
-router.post('/', postCard)
-router.delete('/:id', deleteCard)
-router.put('/:cardId/likes', likeCard)
-router.delete('/:cardId/likes', removeLikeFromCard)
+router.post('/', checkCard, postCard)
+router.delete('/:id', checkCardId, deleteCard)
+router.put('/:cardId/likes', checkCardId, likeCard)
+router.delete('/:cardId/likes', checkCardId, removeLikeFromCard)
 
 export default router
