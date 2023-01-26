@@ -8,7 +8,7 @@ const router = Router()
 
 router.get('/', getCards)
 router.post('/', checkCard, postCard)
-router.delete('/:id', checkCardId, deleteCard)
+router.delete('/:cardId', checkCardId, deleteCard)
 router.put('/:cardId/likes', checkCardId, likeCard)
 router.delete('/:cardId/likes', checkCardId, removeLikeFromCard)
 
