@@ -9,7 +9,6 @@
     "build": "tsc",
     "dev": "ts-node-dev src/app.ts",
     "start": "ts-node src/app.ts",
-    "toServer": "npm run build && scp -Cr ./dist/* testuser3@158.160.61.225:/home/testuser3/mesto-backend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Daniil — kashel369@bk.ru",
