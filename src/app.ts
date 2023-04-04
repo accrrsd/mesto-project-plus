@@ -2,6 +2,8 @@ import dotenv from 'dotenv'
 import express from 'express'
 import mongoose from 'mongoose'
 
+import cors from 'cors'
+
 import { createUser, login } from './controllers/users'
 import authMiddleware from './middlewares/auth'
 import errorHandler from './middlewares/errorHandler'
@@ -15,7 +17,11 @@ dotenv.config()
 const { PORT = 3000, DBURL = 'mongodb://localhost:27017/mestodb' } = process.env
 
 const app = express()
-
+app.use(
+  cors({
+    origin: '*',
+  })
+)
 app.use(express.json())
 app.use(requestLogger)
 app.use(express.urlencoded({ extended: true }))
