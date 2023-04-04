@@ -1,11 +1,11 @@
-import express, { Request, Response, NextFunction } from 'express'
-import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import express from 'express'
+import mongoose from 'mongoose'
 
-import { login, createUser } from './controllers/users'
+import { createUser, login } from './controllers/users'
 import authMiddleware from './middlewares/auth'
 import errorHandler from './middlewares/errorHandler'
-import { requestLogger, errorLogger } from './middlewares/logger'
+import { errorLogger, requestLogger } from './middlewares/logger'
 import cardsRouter from './routes/cards'
 import usersRouter from './routes/users'
 import { checkCreateUser, checkLogin } from './validators/userValidators'
@@ -21,6 +21,12 @@ app.use(requestLogger)
 app.use(express.urlencoded({ extended: true }))
 
 mongoose.connect(DBURL)
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт')
+  }, 0)
+})
 
 app.post('/signin', checkLogin, login)
 app.post('/signup', checkCreateUser, createUser)
